@@ -1,0 +1,6 @@
+{
+  "purpose": "Exclusions explicites pour les corpus fictifs de référence uniquement.",
+  "excluded_filenames": [
+    "99_CORRIGE_NE_PAS_IMPORTER.md"
+  ]
+}

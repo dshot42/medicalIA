@@ -1,0 +1,2 @@
+"""Configuration et infrastructure transversale."""
+

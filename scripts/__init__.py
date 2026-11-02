@@ -1,0 +1,2 @@
+"""Scripts utilitaires MedConnect AI."""
+

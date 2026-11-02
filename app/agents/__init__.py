@@ -1,0 +1,2 @@
+"""Workflow d'analyse LangGraph."""
+

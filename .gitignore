@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+frontend/node_modules/
+frontend/dist/
+frontend/.npm-cache/
+.env
+data/*.db
+data/qdrant*/
+data/logs/
+!data/qdrant/.gitkeep
+uploads/*
+!uploads/.gitkeep
+

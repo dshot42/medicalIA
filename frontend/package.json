@@ -1,0 +1,28 @@
+{
+  "name": "medconnect-ai-frontend",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --configLoader runner",
+    "build": "vite build",
+    "preview": "vite preview --configLoader runner"
+  },
+  "dependencies": {
+    "vue": "3.5.34"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "6.0.7",
+    "@types/estree": "https://registry.npmjs.org/@types/estree/-/estree-1.0.9.tgz",
+    "estree-walker": "file:vendor/estree-walker",
+    "magic-string": "https://registry.npmjs.org/magic-string/-/magic-string-0.30.21.tgz",
+    "nanoid": "https://registry.npmjs.org/nanoid/-/nanoid-3.3.12.tgz",
+    "source-map-js": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz",
+    "vite": "7.3.3"
+  },
+  "overrides": {
+    "@types/estree": "$@types/estree",
+    "estree-walker": "$estree-walker",
+    "nanoid": "$nanoid"
+  }
+}

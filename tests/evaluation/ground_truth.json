@@ -1,0 +1,6 @@
+{
+  "scenario_id": "client_test-1",
+  "expected_diagnosis_for_post_run_evaluation_only": "Porphyrie aiguë intermittente",
+  "access_policy": "Ce fichier n'est importé par aucun module app et n'est lu qu'après l'investigation par le script d'évaluation."
+}
+
