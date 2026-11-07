@@ -181,9 +181,52 @@ le modèle en référentiel médical validé et ne garantit pas la justesse clin
 
 ## Configuration LLM
 
+### Télécharger le modèle et définir son chemin local
+
+Le script [`ressources/hf_dl_model_repo.bat`](ressources/hf_dl_model_repo.bat)
+télécharge **Qwen3.5-9B-Q6_K.gguf**, la version GGUF quantifiée Q6_K de Qwen3.5-9B,
+depuis le dépôt [unsloth/Qwen3.5-9B-GGUF sur Hugging Face](https://huggingface.co/unsloth/Qwen3.5-9B-GGUF).
+Depuis la racine du projet, installez la CLI Hugging Face dans `.venv`, puis lancez le script :
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install --upgrade huggingface_hub
+$env:Path = "$PWD\.venv\Scripts;$env:Path"
+.\ressources\hf_dl_model_repo.bat
+```
+
+Le script exécute la commande suivante, que vous pouvez aussi lancer directement :
+
+```powershell
+hf download unsloth/Qwen3.5-9B-GGUF Qwen3.5-9B-Q6_K.gguf --local-dir .
+```
+
+Le fichier est enregistré dans **`Qwen3.5-9B-Q6_K.gguf` à la racine du projet**
+si vous lancez la commande depuis cette racine. `--local-dir .` désigne le
+répertoire courant, pas le dossier du script. Pour choisir un autre emplacement,
+remplacez `.` par le dossier souhaité.
+
+Dans **`.env` à la racine du projet**, définissez le chemin absolu du fichier
+`.gguf` choisi, et non celui du dossier. Si `.env` n'existe pas, créez-le avec
+`Copy-Item .env.example .env`. Exemple à adapter à votre emplacement du projet :
+
+```dotenv
+MEDCONNECT_LLM_PROVIDER=gguf
+MEDCONNECT_GGUF_MODEL_PATH=C:/chemin/medical-search/Qwen3.5-9B-Q6_K.gguf
+```
+
+Dans le code, la valeur par défaut se trouve dans
+[`app/core/config.py`](app/core/config.py), attribut **`Settings.gguf_model_path`**.
+La variable `MEDCONNECT_GGUF_MODEL_PATH` du fichier `.env` remplace cette valeur
+sans modifier le code. Redémarrez l'application après un changement.
+
+Le code et `.env.example` contiennent actuellement un chemin propre à la machine
+de développement. Le téléchargement ne le remplace pas automatiquement : renseignez
+votre chemin local dans `.env` avant de démarrer l'application.
+
 ### GGUF local configuré
 
-Le projet est configuré par défaut avec le modèle fourni, chargé paresseusement au premier appel :
+Le projet pointe par défaut vers le modèle Qwen ci-dessous, à installer séparément
+ou à remplacer par votre GGUF local. Il est chargé au premier appel :
 
 ```dotenv
 MEDCONNECT_LLM_PROVIDER=gguf
